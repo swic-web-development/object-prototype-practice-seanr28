@@ -37,6 +37,8 @@ export function calculateThreatLevels(monsters) {
  */
 export function extractMonsterNames(monsters) {
   // TODO: Extract all monster names into an array using Object methods
+
+  return Object.values(monsters).flatMap((level) => level.map((monster) => monster.name))
 }
 
 /**
