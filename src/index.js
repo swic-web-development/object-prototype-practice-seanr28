@@ -8,6 +8,26 @@ import data from './data.js'
 export function calculateThreatLevels(monsters) {
   // TODO: Calculate the threat level (health × damage) for each monster
   // and return an array of monsters with their threat levels
+
+  const demons = {
+    easy: [
+      { name: 'Imp', health: 60, damage: 20 },
+      { name: 'Zombie', health: 20, damage: 10 },
+    ],
+    medium: [
+      { name: 'Hell Knight', health: 500, damage: 45 },
+      { name: 'Cacodemon', health: 400, damage: 35 },
+    ],
+    hard: [
+      { name: 'Baron of Hell', health: 1000, damage: 60 },
+      { name: 'Cyberdemon', health: 4000, damage: 80 },
+    ],
+  }
+
+  calculateThreatLevels[monsters] = demons[monsters].map((monster) => ({
+    name: monster.name,
+    threatLevel: monster.health * monster.damage,
+  }))
 }
 
 /**
