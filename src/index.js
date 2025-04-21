@@ -1,4 +1,4 @@
-import data from './data.js'
+import './data.js'
 
 /**
  * Calculate the threat level (health × damage) for each monster
@@ -52,6 +52,27 @@ export function organizeByThreatLevel(monsters) {
   // lowThreat: < 10,000
   // mediumThreat: between 10,000 and 50,000
   // highThreat: > 50,000
+
+  const threatCategories = {
+    lowThreat: [],
+    mediumThreat: [],
+    highThreat: [],
+  }
+
+  Object.values(monsters).forEach((level) => {
+    level.forEach((monster) => {
+      const threatLevel = monster.health * monster.damage
+
+      // Determine the correct category
+      const category =
+        threatLevel < 10000 ? 'lowThreat' : threatLevel <= 50000 ? 'mediumThreat' : 'highThreat'
+
+      // Push the monster with its threat level into the appropriate category
+      threatCategories[category].push({ ...monster, threatLevel })
+    })
+  })
+
+  return threatCategories
 }
 
 export function sum(a, b) {
